@@ -20,7 +20,7 @@ ui <- fluidPage(
   titlePanel(
     div(
       h1("⚽ DaTactic-SocCheap-App", style = "font-weight: 700; color: #2c3e50;"),
-      h4("Scouting y Análisis Táctico de Bajo Presupuesto a nivel profesional", style = "color: #7f8c8d; margin-bottom: 25px;")
+      h4("Scouting y Análisis Táctico de Bajo Presupuesto a Nivel Profesional", style = "color: #7f8c8d; margin-bottom: 25px;")
     )
   ),
   
