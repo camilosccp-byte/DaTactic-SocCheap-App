@@ -47,6 +47,17 @@ La Shiny App incluye un módulo de exportación rápida diseñado para el trabaj
 * **Botón de Descarga Directa:** Permite exportar el diagnóstico táctico generado con un solo clic.
 * **Formato Portable (HTML/PDF):** El sistema compila un reporte limpio, estandarizado y responsivo. Esto facilita que el analista lo envíe por WhatsApp/correo al cuerpo técnico o lo imprima para la charla previa al partido en el camerino (u otros espacios que se consideren importantes).
 
+______________________________________________________________________________________________________________________________________
+
+## 🚀 Guía de Uso Rápido (Instrucciones Clave)
+
+Para garantizar un análisis correcto dentro de la interfaz gráfica, ten en cuenta las siguientes pautas de operación:
+
+1. ⌨️ **Valores Dinámicos (Ingreso Manual):** La aplicación muestra valores numéricos por defecto en el panel izquierdo al arrancar. **Estos valores NO son estáticos.** Están diseñados como una guía base; tú debes modificarlos manualmente con el teclado ingresando los datos reales del partido del rival que deseas analizar antes de presionar "Generar Diagnóstico Táctico".
+2. 🗂️ **Modelos Precargados vs. Datos Propios:** En el menú desplegable "Seleccionar Liga de Referencia", dispones de dos opciones históricas precargadas (Brasil y Colombia) para realizar pruebas inmediatas. Sin embargo, si seleccionas la **tercera opción ("Subir Base de Datos Propia")**, se habilitará un módulo para cargar tu propio dataset en formato `.csv`. El sistema recalculará los percentiles automáticamente, adaptando la inteligencia de la app a la realidad física y técnica de tu propia liga local.
+3. 📄 Una vez presionado el boton de generar HMTL, se debe elegir ubicacion y ejecutarlo posteriormente para verlo en texto estático en la web de forma aislada en una ventana independiente o descargarlo como PDF.
+
+
 ## Importante
 ### 🚀 Cómo generar los datos de prueba
 Si deseas replicar o modificar el volumen de los datos simulados, puedes ejecutar el script de R incluido en este repositorio:
