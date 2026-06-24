@@ -138,7 +138,7 @@ server <- function(input, output, session) {
   })
   
   # 2.3. Renderizar el texto en pantalla de forma elegante
-  output::diagnostico_txt <- renderUI({
+  output$diagnostico_txt <- renderUI({
     if (input$procesar == 0) {
       return(p(em("Modifica las métricas en el panel izquierdo y presiona el botón 'Generar Diagnóstico Táctico' para desplegar el informe escrito."), style = "color: #95a5a6;"))
     }
