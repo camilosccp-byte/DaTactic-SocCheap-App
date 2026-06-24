@@ -7,7 +7,7 @@ Una aplicación analítica desarrollada en **R y Shiny** diseñada específicame
 
 > **¡Aplicación en Vivo!** Probada y desplegada con éxito en la nube. Puedes acceder a la plataforma interactiva de forma directa y gratuita haciendo clic en el siguiente botón:
 
-[![Probar App en Vivo](https://shields.io🚀%20PROBAR%20APP-EN%20VIVO-16a085?style=for-the-badge&logo=r&logoColor=white)](https://psyco-scouting-app.shinyapps.io/DaTactic-SocCheap-App/)
+[![Probar App en Vivo](https://shields.io)](https://psyco-scouting-app.shinyapps.io/DaTactic-SocCheap-App/)
 
 ---
 
