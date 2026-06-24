@@ -47,14 +47,22 @@ La Shiny App incluye un módulo de exportación rápida diseñado para el trabaj
 * **Botón de Descarga Directa:** Permite exportar el diagnóstico táctico generado con un solo clic.
 * **Formato Portable (HTML/PDF):** El sistema compila un reporte limpio, estandarizado y responsivo. Esto facilita que el analista lo envíe por WhatsApp/correo al cuerpo técnico o lo imprima para la charla previa al partido en el camerino (u otros espacios que se consideren importantes).
 
+## Importante
+### 🚀 Cómo generar los datos de prueba
+Si deseas replicar o modificar el volumen de los datos simulados, puedes ejecutar el script de R incluido en este repositorio:
+```R
+source("scripts/generar_datos_sinteticos.R")
+```
+Esto creará automáticamente los archivos `.csv` en la raíz de tu directorio de trabajo.
+
 ---
 
 ## 🚀 Próximos Pasos en el Repositorio
 
 *   [x] Diseño conceptual del MVP táctico.
 *   [x] Construcción del motor de simulación y calibración regional (Brasil/Colombia).
-*   [ ] Script de cálculo automatizado de percentiles (Umbrales dinámicos).
-*   [ ] Interfaz de usuario interactiva en Shiny App.
+*   [x] Script de cálculo automatizado de percentiles (Umbrales dinámicos).
+*   [x] Interfaz de usuario interactiva en Shiny App.
 
 ---
 
