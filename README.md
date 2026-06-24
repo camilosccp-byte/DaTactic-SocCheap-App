@@ -1,11 +1,16 @@
-# Datactic-SocCheap-App
+# DaTactic-SocCheap-App
 Con el proposito de dar una aproximacion al area de datos a clubes con presupuesto limitado, he creado este repositorio con el fin de que cualquier integrante del staff ingresando a plataformas como Flashscore, Sofascore etc, use esas metricas y tenga un analisis instantaneo de su rival con ponderaciones a nivel de su propia liga!
-
-# ⚽ TacticalInsight-R: Scouting de Bajo Presupuesto
 
 Una aplicación analítica desarrollada en **R y Shiny** diseñada específicamente para cuerpos técnicos y analistas de fútbol con presupuestos limitados. La herramienta transforma métricas básicas de *eventing* (extraíbles de plataformas gratuitas como Flashscore o Sofascore, o automatizadas mediante VeoCam) en diagnósticos tácticos automatizados sobre el estilo de juego de los equipos rivales.
 
+# ⚽ DaTactic-SocCheap-App: Scouting de Bajo Presupuesto A Nivel Profesional
+
+> **¡Aplicación en Vivo!** Probada y desplegada con éxito en la nube. Puedes acceder a la plataforma interactiva de forma directa y gratuita haciendo clic en el siguiente botón:
+
+[![Probar App en Vivo](https://shields.io🚀%20PROBAR%20APP-EN%20VIVO-16a085?style=for-the-badge&logo=r&logoColor=white)](https://psyco-scouting-app.shinyapps.io/DaTactic-SocCheap-App/)
+
 ---
+
 
 ## 💡 El Problema y la Solución
 
