@@ -6,7 +6,7 @@ library(tidyr)
 
 set.seed(42)
 
-# Función de transformación a formato largo (Mantiene la estructura)
+# Función de transformación a formato largo (Mantiene estructura)
 formato_largo <- function(df) {
   tl <- df %>% select(id_partido, temporada, torneo, equipo = equipo_local, rival = equipo_visitante, posesion = posesion_local, momentum = momentum_local, pases = pases_local, pases_ultimo_tercio = pases_ut_local, pases_area_rival = pases_area_local, pases_entre_lineas = pases_lineas_local, grandes_ocasiones = grandes_oc_local, remates_al_arco = remates_arco_local, xG = xG_local, xGOT = xGOT_local) %>% mutate(condicion = "Local")
   tv <- df %>% select(id_partido, temporada, torneo, equipo = equipo_visitante, rival = equipo_local, posesion = posesion_visitante, momentum = momentum_visitante, pases = pases_visitante, pases_ultimo_tercio = pases_ut_visitante, pases_area_rival = pases_area_visitante, pases_entre_lineas = pases_lineas_visitante, grandes_ocasiones = grandes_oc_visitante, remates_al_arco = remates_arco_visitante, xG = xG_visitante, xGOT = xGOT_visitante) %>% mutate(condicion = "Visitante")
