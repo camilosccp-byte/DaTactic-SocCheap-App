@@ -1,4 +1,4 @@
-# 🔮 Plan de Evolución y Mejoras Futuras: TacticalInsight-R
+# 🔮 Plan de Evolución y Mejoras Futuras: DaTactic-SocCheap-App
 
 Este documento detalla la hoja de ruta (*roadmap*) para las próximas versiones de la aplicación. El objetivo principal es expandir las capacidades del MVP actual, transitando de un diagnóstico puramente colectivo a un ecosistema de análisis integral, portátil y granular de bajo costo.
 
@@ -48,3 +48,6 @@ A largo plazo, el sistema migrará de reglas lógicas condicionales fijas (`if/e
 
 ---
 
+## 5. KPI's en constante mejora
+
+Estamos abiertos a escuchar propuestas de integración de otras métricas accesibles desde las apps gratuitas mencionadas en el READme.md con el objetivo de consensuar una evaluacion solida y mas robusta salida táctica en el diagnostico final!
