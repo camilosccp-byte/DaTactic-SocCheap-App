@@ -25,7 +25,7 @@ El fútbol es un juego de relaciones estadísticas. Esta app demuestra que cruza
 
 ## 🛠️ Arquitectura de Datos e Hiperrealismo Sudamericano
 
-Para probar y validar la aplicación sin depender de APIs de pago, el repositorio incluye un **generador de datos sintéticos avanzados (falsos pero consistentes)**. A diferencia de las simulaciones azarosas tradicionales, este motor aplica reglas de consistencia táctica en **formato largo (espejo)** y cuenta con calibración cultural/deportiva regional:
+Para probar y validar la aplicación sin depender de APIs de pago, el repositorio incluye un **generador de datos sintéticos avanzados (simulados pero consistentes)**. A diferencia de las simulaciones azarosas tradicionales, este motor aplica reglas de consistencia táctica en **formato largo (espejo)** y cuenta con calibración cultural/deportiva regional:
 
 ### 🇧🇷 Modelo Brasil (`data/datos_prueba_liga_brasil.csv`)
 *   **Volumen:** 20 equipos reales del Brasileirão Serie A.
