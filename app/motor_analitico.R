@@ -3,11 +3,12 @@
 
 library(dplyr)
 
-# 1. FUNCIÓN PRINCIPAL: Calcula los percentiles 25 y 75 de la base de datos de la liga
+# 1. FUNCIÓN PRINCIPAL: Calcula: percentiles 25 y 75 de la base de datos de la liga
 calcular_umbrales_liga <- function(ruta_csv) {
   df_liga <- read.csv(ruta_csv)
   
-  # Las 10 métricas colectivas obligatorias
+  # Las 10 métricas colectivas obligatorias <- elegidas luego de un analisis minucioso en diferentes ligas y datos disponibles de apps
+  # gratuitas de eventing, listas solo para obtener e ingresar en la calculadora del UI
   metricas_clave <- c("posesion", "momentum", "pases", "pases_ultimo_tercio", 
                       "pases_area_rival", "pases_entre_lineas", "grandes_ocasiones", 
                       "remates_al_arco", "xG", "xGOT")
@@ -30,8 +31,8 @@ calcular_umbrales_liga <- function(ruta_csv) {
 
 # 2. FUNCIÓN COMPLEMENTARIA: Evalúa el partido manual del analista contra los percentiles
 generar_diagnostico_tactico <- function(partido_manual, umbrales) {
-  
-  # --- PÁRRAFO 1: ESTILO DE JUEGO E INICIATIVA ---
+  # 3 Parrafos para la generacion del diagnóstico táctico final, ya subdividiendo los grupos de las métricas
+  # --- PÁRRAFO 1: ESTILO DE JUEGO E INICIATIVA --- 
   p1 <- ""
   if (partido_manual$posesion > umbrales$posesion$alto && partido_manual$pases_area_rival > umbrales$pases_area_rival$alto) {
     p1 <- "El equipo adversario presenta un estilo de juego basado en el ASEDIO y el posicionamiento avanzado. Es un equipo dominador que busca el control del partido mediante la circulación de balón en campo rival, instalando su bloque alto y hundiendo al oponente en su propia área."
@@ -60,7 +61,7 @@ generar_diagnostico_tactico <- function(partido_manual, umbrales) {
   # --- PÁRRAFO 3: RECOMENDACIÓN DE CAMPO ---
   p3 <- "Para el planteamiento del partido propio, se sugiere neutralizar los circuitos lógicos del rival identificados en este reporte, presionar las zonas de inicio detectadas si su repliegue es lento y forzar el juego hacia sus pasillos de menor comodidad estadística."
   
-  # Unir los párrafos de forma limpia con saltos de línea doble para R
+  # Finalmente, unir los párrafos de forma limpia con saltos de línea doble para R
   reporte_completo <- paste(p1, p2, p3, sep = "\n\n")
   return(reporte_completo)
 }
