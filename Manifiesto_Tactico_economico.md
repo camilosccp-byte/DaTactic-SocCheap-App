@@ -13,4 +13,4 @@ El fútbol es un juego de consecuencias:
 * Un equipo que acumula un alto volumen de pases en el último tercio y asedia el área rival está ejecutando un modelo de **control territorial**, pero si sus jugadores en roles de cobertura son lentos, está dejando una ventana de vulnerabilidad crítica a su espalda.
 * Un equipo que registra baja posesión pero un xG elevado por remate no está siendo dominado; está siendo **directo, vertical y letal**.
 
-TacticalInsight-R es el puente que traduce la estadística fría de un partido en un diagnóstico humano y aplicable para el director técnico en el camerino. No se trata de reemplazar el ojo del entrenador, sino de respaldar su intuición con rigor científico y herramientas accesibles.
+DaTac-SocCheap-App es el puente que traduce la estadística fría de un partido en un diagnóstico humano y aplicable para el director técnico en el camerino. No se trata de reemplazar el ojo del entrenador, sino de respaldar su intuición con rigor científico y herramientas accesibles.
