@@ -1,4 +1,4 @@
-# 🧠 Manifiesto Táctico: El Origen de TacticalInsight-R
+# 🧠 Manifiesto Táctico: El Origen de DaTactic-SocCheap-App
 
 ### La Idea Semilla
 En el fútbol moderno, el análisis de datos se ha convertido en un privilegio de las élites. Los clubes con presupuestos millonarios monitorizan cada segundo del juego con herramientas inaccesibles para el resto de la pirámide del fútbol. Este desarrollo surge de una convicción simple: **la falta de presupuesto no puede ser una barrera para la inteligencia táctica.**
