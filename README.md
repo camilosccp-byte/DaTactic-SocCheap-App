@@ -62,6 +62,8 @@ Para garantizar un análisis correcto dentro de la interfaz gráfica, ten en cue
 1. ⌨️ **Valores Dinámicos (Ingreso Manual):** La aplicación muestra valores numéricos por defecto en el panel izquierdo al arrancar. **Estos valores NO son estáticos.** Están diseñados como una guía base; tú debes modificarlos manualmente con el teclado ingresando los datos reales del partido del rival que deseas analizar antes de presionar "Generar Diagnóstico Táctico".
 2. 🗂️ **Modelos Precargados vs. Datos Propios:** En el menú desplegable "Seleccionar Liga de Referencia", dispones de dos opciones históricas precargadas (Brasil y Colombia) para realizar pruebas inmediatas. Sin embargo, si seleccionas la **tercera opción ("Subir Base de Datos Propia")**, se habilitará un módulo para cargar tu propio dataset en formato `.csv`. El sistema recalculará los percentiles automáticamente, adaptando la inteligencia de la app a la realidad física y técnica de tu propia liga local.
 3. 📄 Una vez presionado el boton de generar HMTL, se debe elegir ubicacion y ejecutarlo posteriormente para verlo en texto estático en la web de forma aislada en una ventana independiente o descargarlo como PDF.
+4. 🤖 **Momentum Automatizado (Índice IDT):** Para evitar la ambigüedad de los gráficos visuales sin escala de internet, **esta aplicación calcula el Momentum de forma 100% automática**. El analista no debe digitarlo. El software aplica internamente un algoritmo de *Índice de Dominio Territorial (IDT)* cruzando la posesión, el ratio de remates frente al oponente y el volumen de Grandes Ocasiones, determinando de forma objetiva y científica el nivel de asedio real del rival.
+
 
 
 ## Importante
