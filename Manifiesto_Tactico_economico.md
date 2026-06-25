@@ -1,7 +1,7 @@
 # 🧠 Manifiesto Táctico: El Origen de DaTactic-SocCheap-App
 
 ### La Idea Semilla
-En el fútbol moderno, el análisis de datos se ha convertido en un privilegio de las élites. Los clubes con presupuestos millonarios monitorizan cada segundo del juego con herramientas inaccesibles para el resto de la pirámide del fútbol. Este desarrollo surge de una convicción simple: **la falta de presupuesto no puede ser una barrera para la inteligencia táctica.**
+En el fútbol moderno, el análisis de datos se ha convertido en un privilegio de amplios presupuestos. Los clubes con economías millonarios, monitorizan cada segundo del juego con herramientas inaccesibles para el resto de la pirámide del fútbol y que confiere una gran ventaja en metricas, datos y conceptos que no son de igual acceso para otras instituciones. Este desarrollo surge de una convicción simple: **la falta de presupuesto no puede ser una barrera para la inteligencia táctica.**
 
 ### Filosofía de Diseño: Democratizar la Analítica
 Esta aplicación nace para resolver un problema real de los cuerpos técnicos de ligas menores, fútbol formativo y fútbol amateur: la escasez de tiempo y recursos. Mientras que un analista de élite tiene software que procesa millones de eventos, un analista de bajo presupuesto debe optimizar. 
