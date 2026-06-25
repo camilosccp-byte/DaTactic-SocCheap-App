@@ -1,21 +1,20 @@
-# ==============================================================================
-# ARCHIVO PRINCIPAL: app/app.R
-# TAREA: Interfaz y Servidor de la Shiny App (TacticalInsight-R)
-# ==============================================================================
+# Archivo unificado: app/app.R
+# Interfaz y servidor (puedes crearlos por separado en tu espacio de RStudio)
+
 
 library(shiny)
 library(shinythemes)
 library(dplyr)
 
-# IMPORTAR EL MOTOR ANALÍTICO DESDE TU ARCHIVO INDEPENDIENTE
-# Ambos archivos deben estar guardados dentro de la carpeta app/
+# Se importa el motor analítico desde el archivo independiente (ver carpetas anexas)
+# Ambos archivos deberan estar guardados dentro de una carpeta llamada: app/
 source("motor_analitico.R")
 
 # ==============================================================================
 # 1. INTERFAZ DE USUARIO (UI)
-# ==============================================================================
+
 ui <- fluidPage(
-  theme = shinytheme("flatly"), # Un diseño limpio, moderno y profesional
+  theme = shinytheme("flatly"), # Usamos Flatly para tener un diseño limpio, moderno y profesional
  
    titlePanel(
     title = div(
@@ -29,7 +28,7 @@ ui <- fluidPage(
     sidebarPanel(
       width = 4,
       
-      # SECCIÓN 1: CONFIGURACIÓN DE LA LIGA BASE
+      # SECCIÓN 1: CONFIGURACIÓN DE LA LIGA BASE (aqui se ubican las ligas desde los data frames creados)
       tags$h4("1. Contexto Competitivo", style = "font-weight: 600; color: #2c3e50; margin-top: 10px;"),
       selectInput("liga_seleccionada", "Seleccionar Liga de Referencia:",
                   choices = c("Colombia (Ritmo Mixto / Fricción)" = "../data/datos_prueba_liga_betplay_colombia.csv",
@@ -42,17 +41,20 @@ ui <- fluidPage(
       ),
       hr(style = "border-top: 1px solid #bdc3c7;"),
       
-      # SECCIÓN 2: PESTAÑAS DE INGRESO (DIRECTO VS CALCULADORA DE 5 FECHAS)
+      # SECCIÓN 2: PESTAÑAS DE INGRESO (DIRECTO VS CALCULADORA DE 5 FECHAS) (En este punto se añadio la mejora, para que el analista
+      # no tenga que calcular el promedio de los 5 últimos juegos del equipo rival, pero tiene la opcion de hacerlo tambien
+      # manualmente si desea en el modo : directo
       tags$h4("2. Datos del Rival (Eventing)", style = "font-weight: 600; color: #2c3e50;"),
       
       tabsetPanel(
         id = "metodo_ingreso",
         
-        # PESTAÑA A: INGRESO MANUAL DIRECTO
+        # PESTAÑA A: INGRESO MANUAL DIRECTO 
         tabPanel("Ingreso Directo",
                  br(),
                  p(strong("Control y Territorio"), style = "color: #16a085; margin-bottom: 5px;"),
-                 # Dejamos solo la posesión, el momentum se calcula solo
+                 # Aquí dejamos solo la posesión, el momentum se calcula solo, con los datos ponderados de las metricas que ingresa
+                 # el analista
                  numericInput("pos", "Posesión (%) del Rival", value = 50, min = 0, max = 100, step = 0.1),
                  
                  p(strong("Distribución y Progresión"), style = "color: #2980b9; margin-top: 10px; margin-bottom: 5px;"),
@@ -66,7 +68,8 @@ ui <- fluidPage(
                  ),
                  
                  p(strong("Finalización y Peligro"), style = "color: #c0392b; margin-top: 10px; margin-bottom: 5px;"),
-                 # Añadimos los remates del Oponente para poder hacer la fórmula del espejo de tiros
+                 # Añadimos los remates del oponente para poder hacer la fórmula del espejo de tiros, teniendo en cuenta que cada id_partido
+                 # debe tener datos del local y visitante
                  splitLayout(
                    numericInput("rem", "Remates al Arco Rival", value = 5, min = 0),
                    numericInput("rem_op", "Remates al Arco Oponente", value = 5, min = 0)
@@ -78,7 +81,9 @@ ui <- fluidPage(
                  numericInput("xgot", "xGOT Total Rival", value = 1.1, min = 0, step = 0.01)
         ),
         
-        # PESTAÑA B: CALCULADORA DE PROMEDIOS (ÚLTIMAS 5 JORNADAS)
+        # PESTAÑA B: CALCULADORA DE PROMEDIOS (ÚLTIMAS 5 JORNADAS) <- Esta es la optimizacion para generar los promedios de cada métrica
+        # y no solo ingresar los de un solo partido que no mostrarían la tendencia real actual del equipo, e inducirian a errores
+        # de interpretacion
         tabPanel("📊 Calculadora 5 Fechas",
                  br(),
                  p(em("Pega los valores de las últimas 5 jornadas separados por comas."), style = "font-size:12px; color:#7f8c8d;"),
@@ -88,7 +93,7 @@ ui <- fluidPage(
                  textInput("c_par", "Pases Área Rival", value = "20, 20, 20, 20, 20"),
                  textInput("c_pel", "Pases Entre Líneas", value = "8, 8, 8, 8, 8"),
                  textInput("c_rem", "Remates al Arco Rival", value = "5, 5, 5, 5, 5"),
-                 textInput("c_rem_op", "Remates al Arco Oponente", value = "5, 5, 5, 5, 5"), # Necesario para la fórmula
+                 textInput("c_rem_op", "Remates al Arco Oponente", value = "5, 5, 5, 5, 5"),
                  textInput("c_goc", "Grandes Ocasiones Rival", value = "1, 1, 1, 1, 1"),
                  textInput("c_xg", "xG Total Rival", value = "1.2, 1.2, 1.2, 1.2, 1.2"),
                  textInput("c_xgot", "xGOT Total Rival", value = "1.1, 1.1, 1.1, 1.1, 1.1")
@@ -100,21 +105,22 @@ ui <- fluidPage(
     ),
     
     
-    # CUERPO PRINCIPAL: DONDE SE MUESTRA EL REPORTE
+    # CUERPO PRINCIPAL: (aquí se muestra el reporte)
     mainPanel(
       width = 8,
       tags$h3("📋 Informe de Inteligencia Analítica", style = "font-weight: 600; color: #2c3e50; margin-top: 10px;"),
       p("El siguiente reporte ha sido construido cruzando las métricas ingresadas contra la distribución estadística y los percentiles de la liga de referencia seleccionada.", style = "color: #7f8c8d;"),
       br(),
       
-      # Caja contenedora del texto del diagnóstico
+      # Caja contenedora del texto del diagnóstico ( aquí aparecera el veredicto y diagnostico final; interpretable y en terminos
+      # que cualquier cuerpo técnico pueda comprender y explicar a sus jugadores)
       wellPanel(
         style = "background-color: #ffffff; border-left: 5px solid #34495e; padding: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);",
         htmlOutput("diagnostico_txt")
       ),
       
       br(),
-      # Botón interactivo para exportar el reporte
+      # Añadismo un botón interactivo para exportar el reporte
       uiOutput("render_boton_descarga")
     )
   )
@@ -122,10 +128,11 @@ ui <- fluidPage(
 
 # ==============================================================================
 # 2. LÓGICA DEL SERVIDOR (SERVER)
-# ==============================================================================
+
 server <- function(input, output, session) {
   
-  # 2.1. Carga reactiva de los percentiles según la liga seleccionada
+  # 2.1. Carga reactiva de los percentiles según la liga seleccionada (necesaria para obtener baremos y valores referenciales, para 
+  # obtener diagnosticos ponderados)
   umbrales_actuales <- reactive({
     if (input$liga_seleccionada == "propia") {
       req(input$archivo_propio)
@@ -135,15 +142,14 @@ server <- function(input, output, session) {
     }
   })
   
-  # 2.2. Evento reactivo que se activa SOLO cuando el usuario hace clic en el botón
-  reporte_reactivo <- eventReactive(input$procesar, {  # Función interna para promediar strings separados por comas
-    # Función interna para promediar strings separados por comas
+  # 2.2. Evento reactivo que se activa SOLO cuando el usuario hace clic en el botón (esto es necesario para ingresar los data sets propios)
+  reporte_reactivo <- eventReactive(input$procesar, {  
     obtener_promedio <- function(input_string) {
       numeros <- as.numeric(unlist(strsplit(input_string, ",")))
       return(mean(numeros, na.rm = TRUE))
     }
       
-      # 1. Recolectar las variables base según la pestaña activa
+      # 1. Recolectar las variables base según la pestaña activa (revisara de donde provienen los datos y calculara los valores)
       if (input$metodo_ingreso == "📊 Calculadora 5 Fechas") {
         v_pos <- obtener_promedio(input$c_pos)
         v_pas <- obtener_promedio(input$c_pas)
@@ -168,7 +174,8 @@ server <- function(input, output, session) {
         v_xgot <- input$xgot
       }
       
-      # 2. APLICACIÓN AUTOMÁTICA DE LA FÓRMULA DE MOMENTUM (IDT)
+      # 2. APLICACIÓN AUTOMÁTICA DE LA FÓRMULA DE MOMENTUM (IDT) <- soportandonos en la formula de momentum (en campo), ahorramos trabajo 
+      # al analista al nosotros usar parte de los datos de las otras métricas y asi calcular este valor clave
       # Evitamos división por cero si no hay remates en el partido
       total_tiros <- max(v_rem + v_rem_op, 1)
       ratio_tiros <- v_rem / total_tiros
@@ -196,7 +203,7 @@ server <- function(input, output, session) {
     })
     
   
-  # 2.3. Renderizar el texto en pantalla de forma elegante
+  # 2.3. Renderizamos el texto en pantalla de profesional
   output$diagnostico_txt <- renderUI({
     if (input$procesar == 0) {
       return(p(em("Modifica las métricas en el panel izquierdo y presiona el botón 'Generar Diagnóstico Táctico' para desplegar el informe escrito."), style = "color: #95a5a6;"))
@@ -204,7 +211,7 @@ server <- function(input, output, session) {
     HTML(reporte_reactivo())
   })
   
-  # 2.4. Mostrar el botón de descarga únicamente si el reporte ya ha sido generado
+  # 2.4. Se muestra el botón de descarga únicamente si el reporte ya ha sido generado
   output$render_boton_descarga <- renderUI({
     if (input$procesar > 0) {
       downloadButton("descargar_reporte", "Exportar Reporte Táctico (HTML)", class = "btn-success", style = "font-weight: 600;")
@@ -234,5 +241,5 @@ server <- function(input, output, session) {
   )
 }
 
-# LANZAR LA APLICACIÓN
+# Lanzamos la aplicación
 shinyApp(ui = ui, server = server)
